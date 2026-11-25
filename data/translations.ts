@@ -1,0 +1,321 @@
+import type { Locale } from "@/types";
+
+const fr = {
+  meta: {
+    skipToContent: "Aller au contenu principal",
+  },
+  nav: {
+    home: "Accueil",
+    about: "À propos",
+    skills: "Compétences",
+    projects: "Projets",
+    journey: "Parcours",
+    contact: "Contact",
+    cv: "CV",
+    mainLabel: "Navigation principale",
+    mobileLabel: "Navigation mobile",
+    openMenu: "Ouvrir le menu",
+    closeMenu: "Fermer le menu",
+    homeLink: "Dinot, retour à l'accueil",
+  },
+  theme: {
+    toDark: "Activer le mode sombre",
+    toLight: "Activer le mode clair",
+  },
+  language: {
+    switchLabel: "Passer le site en anglais",
+  },
+  hero: {
+    title: "Étudiant en L3 Informatique",
+    subtitle: "Développement Web • Mobile • Full-Stack",
+    description:
+      "Je conçois des applications web, mobiles et logicielles modernes en combinant développement, bases de données, algorithmique et conception logicielle.",
+    viewProjects: "Voir mes projets",
+    aboutMe: "À propos de moi",
+    downloadCv: "Télécharger mon CV",
+    socialsLabel: "Liens et contact",
+    scrollDown: "Faire défiler vers la suite",
+  },
+  about: {
+    title: "À propos de moi",
+    paragraphs: [
+      "Étudiant en troisième année de licence en Service Informatique aux Organisations, parcours Génie Logiciel, à l'ESMIA. Je me forme au développement d'applications web, mobiles et logicielles.",
+      "À travers mes projets académiques, j'applique l'algorithmique, la modélisation UML, les bases de données et les architectures logicielles à des cas concrets.",
+    ],
+    focusTitle: "Ce que je pratique",
+    focus: [
+      "Développement Web",
+      "Développement Mobile",
+      "Développement Full-Stack",
+      "Développement logiciel",
+      "Bases de données",
+      "Algorithmique",
+      "Conception logicielle",
+    ],
+    stats: {
+      projects: "Projets académiques",
+      level: "Niveau d'études",
+      languages: "Langues parlées",
+    },
+  },
+  skills: {
+    title: "Compétences",
+    subtitle:
+      "Les langages, outils et méthodes que j'utilise dans mes projets.",
+    notionsDescription:
+      "Notions abordées, distinctes de mes compétences principales.",
+  },
+  projects: {
+    title: "Projets",
+    subtitle:
+      "Mes réalisations académiques : des applications concrètes, de la conception au développement.",
+    viewProject: "Voir le projet",
+    github: "Code source",
+    demo: "Démo",
+    githubSoon: "GitHub bientôt disponible",
+    demoSoon: "Démo bientôt disponible",
+    role: "Rôle",
+    category: "Catégorie",
+    technologies: "Technologies",
+    imageAlt: "Aperçu du projet",
+    imagePlaceholder: "Image du projet à venir",
+  },
+  projectDetails: {
+    back: "Tous les projets",
+    presentation: "Présentation",
+    context: "Contexte",
+    objective: "Objectif",
+    myRole: "Mon rôle",
+    work: "Travail réalisé",
+    features: "Fonctionnalités",
+    technologies: "Technologies",
+    architecture: "Conception / architecture",
+    screenshots: "Captures d'écran",
+    links: "Liens",
+    github: "Voir sur GitHub",
+    demo: "Voir la démo",
+    githubSoon: "GitHub bientôt disponible",
+    demoSoon: "Démo bientôt disponible",
+    previous: "Projet précédent",
+    next: "Projet suivant",
+    screenshotsSoon: "Captures d'écran à venir",
+    infoSoon: "Information à venir",
+    typeLabel: "Type",
+  },
+  journey: {
+    title: "Parcours",
+    subtitle: "Ma formation en informatique.",
+    track: "Parcours",
+    studied: "Éléments étudiés",
+  },
+  qualities: {
+    title: "Mes qualités",
+  },
+  languages: {
+    title: "Langues",
+  },
+  interests: {
+    title: "Centres d'intérêt",
+  },
+  contact: {
+    title: "Travaillons ensemble",
+    subtitle:
+      "Une question, une idée de projet ou l'envie d'échanger ? Écrivez-moi.",
+    email: "Email",
+    phone: "Téléphone",
+    github: "GitHub",
+    linkedin: "LinkedIn",
+    location: "Localisation",
+    form: {
+      name: "Nom",
+      namePlaceholder: "Votre nom",
+      email: "Email",
+      emailPlaceholder: "vous@exemple.com",
+      message: "Message",
+      messagePlaceholder: "Votre message",
+      send: "Envoyer",
+      sending: "Envoi en cours",
+      subject: "Message depuis votre portfolio",
+      success:
+        "Votre application de messagerie s'ouvre avec le message prérempli.",
+      error: "L'envoi a échoué. Écrivez-moi directement par email.",
+      required: "Ce champ est obligatoire.",
+      invalidEmail: "Adresse email invalide.",
+    },
+  },
+  footer: {
+    rights: "Tous droits réservés.",
+    builtWith: "Conçu avec Next.js, Tailwind CSS et Framer Motion.",
+    backToTop: "Retour en haut",
+    label: "Pied de page",
+  },
+  common: {
+    newTab: "(s'ouvre dans un nouvel onglet)",
+  },
+  notFound: {
+    title: "Page introuvable",
+    text: "La page demandée n'existe pas ou a été déplacée.",
+    back: "Retour à l'accueil",
+  },
+};
+
+export type Dictionary = typeof fr;
+
+const en: Dictionary = {
+  meta: {
+    skipToContent: "Skip to main content",
+  },
+  nav: {
+    home: "Home",
+    about: "About",
+    skills: "Skills",
+    projects: "Projects",
+    journey: "Journey",
+    contact: "Contact",
+    cv: "CV",
+    mainLabel: "Main navigation",
+    mobileLabel: "Mobile navigation",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
+    homeLink: "Dinot, back to home",
+  },
+  theme: {
+    toDark: "Switch to dark mode",
+    toLight: "Switch to light mode",
+  },
+  language: {
+    switchLabel: "Switch the site to French",
+  },
+  hero: {
+    title: "L3 Computer Science Student",
+    subtitle: "Web • Mobile • Full-Stack Development",
+    description:
+      "I design modern web, mobile and software applications, combining development, databases, algorithms and software design.",
+    viewProjects: "View my projects",
+    aboutMe: "About me",
+    downloadCv: "Download my CV",
+    socialsLabel: "Links and contact",
+    scrollDown: "Scroll to continue",
+  },
+  about: {
+    title: "About me",
+    paragraphs: [
+      "Third-year Bachelor's student in IT Services for Organizations, Software Engineering track, at ESMIA. I am training in web, mobile and software application development.",
+      "Through my academic projects, I apply algorithmics, UML modeling, databases and software architecture to concrete use cases.",
+    ],
+    focusTitle: "What I work on",
+    focus: [
+      "Web development",
+      "Mobile development",
+      "Full-Stack development",
+      "Software development",
+      "Databases",
+      "Algorithmics",
+      "Software design",
+    ],
+    stats: {
+      projects: "Academic projects",
+      level: "Study level",
+      languages: "Spoken languages",
+    },
+  },
+  skills: {
+    title: "Skills",
+    subtitle: "The languages, tools and methods I use in my projects.",
+    notionsDescription:
+      "Topics I have explored, kept separate from my core skills.",
+  },
+  projects: {
+    title: "Projects",
+    subtitle:
+      "My academic work: concrete applications, from design to development.",
+    viewProject: "View project",
+    github: "Source code",
+    demo: "Demo",
+    githubSoon: "GitHub coming soon",
+    demoSoon: "Demo coming soon",
+    role: "Role",
+    category: "Category",
+    technologies: "Technologies",
+    imageAlt: "Preview of the project",
+    imagePlaceholder: "Project image coming soon",
+  },
+  projectDetails: {
+    back: "All projects",
+    presentation: "Overview",
+    context: "Context",
+    objective: "Objective",
+    myRole: "My role",
+    work: "Work done",
+    features: "Features",
+    technologies: "Technologies",
+    architecture: "Design / architecture",
+    screenshots: "Screenshots",
+    links: "Links",
+    github: "View on GitHub",
+    demo: "View demo",
+    githubSoon: "GitHub coming soon",
+    demoSoon: "Demo coming soon",
+    previous: "Previous project",
+    next: "Next project",
+    screenshotsSoon: "Screenshots coming soon",
+    infoSoon: "Information coming soon",
+    typeLabel: "Type",
+  },
+  journey: {
+    title: "Journey",
+    subtitle: "My education in computer science.",
+    track: "Track",
+    studied: "Topics studied",
+  },
+  qualities: {
+    title: "My qualities",
+  },
+  languages: {
+    title: "Languages",
+  },
+  interests: {
+    title: "Interests",
+  },
+  contact: {
+    title: "Let's work together",
+    subtitle:
+      "A question, a project idea or just want to chat? Write to me.",
+    email: "Email",
+    phone: "Phone",
+    github: "GitHub",
+    linkedin: "LinkedIn",
+    location: "Location",
+    form: {
+      name: "Name",
+      namePlaceholder: "Your name",
+      email: "Email",
+      emailPlaceholder: "you@example.com",
+      message: "Message",
+      messagePlaceholder: "Your message",
+      send: "Send",
+      sending: "Sending",
+      subject: "Message from your portfolio",
+      success: "Your mail app is opening with the message pre-filled.",
+      error: "Sending failed. Please email me directly.",
+      required: "This field is required.",
+      invalidEmail: "Invalid email address.",
+    },
+  },
+  footer: {
+    rights: "All rights reserved.",
+    builtWith: "Built with Next.js, Tailwind CSS and Framer Motion.",
+    backToTop: "Back to top",
+    label: "Footer",
+  },
+  common: {
+    newTab: "(opens in a new tab)",
+  },
+  notFound: {
+    title: "Page not found",
+    text: "The page you are looking for does not exist or has been moved.",
+    back: "Back to home",
+  },
+};
+
+export const translations: Record<Locale, Dictionary> = { fr, en };

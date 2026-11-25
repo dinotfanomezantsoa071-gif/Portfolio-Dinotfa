@@ -1,26 +1,279 @@
 @import "tailwindcss";
 
+/* Dark mode piloté par la classe "dark" sur <html> */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Palette sombre par défaut, inspirée des tons prune et violets des références. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
+  --background: #0a0710;
+  --surface: #120d1b;
+  --surface-strong: #1d1429;
+  --foreground: #f8f4ff;
+  --muted: #b0a5bf;
+  --border: #30243c;
+  --accent: #b77cff;
+  --accent-strong: #c99aff;
+  --accent-soft: rgba(183, 124, 255, 0.15);
+  --accent-foreground: #170d22;
+  --nav-background: rgba(12, 8, 18, 0.82);
 }
 
+.light {
+  color-scheme: light;
+  --background: #ffffff;
+  --surface: #f6f7f9;
+  --surface-strong: #eceef2;
+  --foreground: #0b0b10;
+  --muted: #5b6070;
+  --border: #e3e5ea;
+  --accent: #5b5bd6;
+  --accent-strong: #4646c4;
+  --accent-soft: rgba(91, 91, 214, 0.1);
+  --accent-foreground: #ffffff;
+  --nav-background: rgba(255, 255, 255, 0.82);
+}
+
+/* Expose les jetons comme classes Tailwind : bg-background, text-muted, border-border... */
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-nav: var(--nav-background);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    background-color: var(--background);
+    background-image:
+      radial-gradient(ellipse at 18% 0%, color-mix(in srgb, var(--accent) 13%, transparent), transparent 38%),
+      radial-gradient(ellipse at 100% 44%, color-mix(in srgb, var(--accent) 7%, transparent), transparent 32%);
+    background-attachment: fixed;
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--accent-soft);
+    color: var(--foreground);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 0.25rem;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.light body {
+  background-image:
+    radial-gradient(ellipse at 18% 0%, color-mix(in srgb, var(--accent) 4%, transparent), transparent 38%),
+    radial-gradient(ellipse at 100% 44%, color-mix(in srgb, var(--accent) 2%, transparent), transparent 32%);
+}
+
+/* Surfaces discrètement teintées et bordées, sans modifier le contenu des cartes. */
+.dark :where(
+  [class~="border-border"][class~="bg-surface"],
+  [class~="border-border"][class~="bg-background"]
+) {
+  background-image: linear-gradient(
+    135deg,
+    rgba(183, 124, 255, 0.055),
+    transparent 62%
+  );
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025);
+}
+
+@media (hover: hover) {
+  .dark :where(
+    [class~="border-border"][class~="bg-surface"],
+    [class~="border-border"][class~="bg-background"]
+  ):hover {
+    border-color: color-mix(in srgb, var(--border) 68%, var(--accent));
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.035),
+      0 8px 28px rgba(104, 49, 157, 0.12);
+  }
+}
+
+/* Conteneur de page et espacement vertical des sections */
+@utility container-page {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+
+  @media (min-width: 640px) {
+    padding-inline: 2rem;
+  }
+}
+
+@utility section-y {
+  padding-block: 5rem;
+
+  @media (min-width: 768px) {
+    padding-block: 7rem;
+  }
+}
+
+/* Transition fluide lors du changement de thème (classe posée brièvement par lib/theme.ts) */
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  transition:
+    background-color 300ms ease,
+    color 300ms ease,
+    border-color 300ms ease,
+    fill 300ms ease,
+    stroke 300ms ease !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.mask-reveal-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.mask-reveal-word {
+  display: inline-block;
+  transform: translateY(110%);
+  opacity: 0;
+  animation: mask-word-reveal 650ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes mask-word-reveal {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.reading-progress {
+  background-color: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+.glow-card {
+  --glow-x: 50%;
+  --glow-y: 50%;
+}
+
+.glow-card::before {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    420px circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    color-mix(in srgb, var(--accent) 22%, transparent),
+    transparent 70%
+  );
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 350ms ease;
+}
+
+.glow-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+@media (hover: hover) {
+  .glow-card:hover::before {
+    opacity: 1;
+  }
+}
+
+@keyframes nav-enter {
+  from {
+    transform: translateX(var(--nav-offset));
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes nav-exit {
+  to {
+    transform: translateX(var(--nav-offset));
+    opacity: 0;
+  }
+}
+
+::view-transition-old(.nav-forward) {
+  --nav-offset: 48px;
+  animation: 150ms ease-in both nav-exit;
+}
+
+::view-transition-new(.nav-forward) {
+  --nav-offset: -48px;
+  animation: 210ms ease-out 150ms both nav-enter;
+}
+
+::view-transition-old(.nav-back) {
+  --nav-offset: -48px;
+  animation: 150ms ease-in both nav-exit;
+}
+
+::view-transition-new(.nav-back) {
+  --nav-offset: 48px;
+  animation: 210ms ease-out 150ms both nav-enter;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mask-reveal-word {
+    animation: none;
+    transform: none;
+    opacity: 1;
+  }
+
+  .glow-card::before {
+    display: none;
+  }
+
+  ::view-transition-old(.nav-forward),
+  ::view-transition-new(.nav-forward),
+  ::view-transition-old(.nav-back),
+  ::view-transition-new(.nav-back) {
+    animation: none !important;
+  }
 }
